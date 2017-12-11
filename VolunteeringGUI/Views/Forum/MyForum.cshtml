@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Data.forum>
+
+@{
+    ViewBag.Title = "MyForum";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="forum" class="home">
+    <div class="home_overlay">
+        <div class="container">
+            <div class="row">
+                <div class="main_slider_area">
+                    <div class="slider">
+                        <div class="single_slider">
+                            <h3>Welcome To Our Forum</h3>
+                            <p>Peace  -  Unity  -  Love</p>
+                            <div class="single_slider_img_icon">
+                                <img src="~/Content/images/ii1.png" alt="" />
+                            </div>
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <div class="home_searce_domain_area">
+                                    <div class="main_home_searce_domain_content">
+                                        <input type="text" placeholder="How Can I Help You? ..." />
+                                        <select class="form-control">
+                                            <option>FORUM</option>
+                                        </select>
+                                        <input type="submit" value="Look Up!" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="pricing" class="pricing">
+    <div class="container">
+        <div class="row">
+            <div class="main_pricing">
+                <div class="col-sm-10 col-sm-offset-1">
+                    @foreach (var item in Model)
+                    {
+                        <div class="row">
+                            <div class="col-sm-8 col-xs-12">
+                                <div class="single_left_planig">
+                                    <h2>@Html.DisplayFor(modelItem => item.subject)</h2>
+                                    <p>@Html.DisplayFor(modelItem => item.question)</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-xs-12">
+                                <div class="single_right_planig">
+                                    @Html.ActionLink("Edit", "MyForumDetails", new { id = item.id }, new { htmlAttributes = new { @class = "btn btn-primary" } })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { htmlAttributes = new { @class = "btn btn-primary" } })
+                                    @*<a href="@Html.ActionLink("Delete", "Delete", new { id=item.id })" class="btn btn-primary">Update</a>
+                                    <a href="@Html.ActionLink("Delete", "Delete", new { id=item.id })" class="btn btn-primary">Delete</a>*@
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>

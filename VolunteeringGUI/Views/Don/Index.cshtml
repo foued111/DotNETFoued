@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Data.Don>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<br/>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h2>List Of Donations</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateDon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.picture)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateDon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            <img src="@Url.Content("~/Content/images/"+item.picture)" height="80px" width="140px" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DonId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DonId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DonId })
+        </td>
+    </tr>
+}
+
+</table>
